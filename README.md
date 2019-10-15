@@ -10,6 +10,10 @@ The artifacts from the electron build will be put into:
 * `target\electron\springboot-on-electron-darwin-x64`
 * `target\electron\springboot-on-electron-win32-x64`
 
+When using Mac OS or linux, it is required to have `wine` installed to build windows (check the maven build for further informations).
+
+When using Windows, it is required to run the `mvn clean install -Pproduction` with admin privileges to build `darwin` (check the maven build for further informations).
+
 # Shipping OpenJDK
 Since not all your users have a JVM available via the classpath a OpenJDK 8 will be packed into the electron builds
 
