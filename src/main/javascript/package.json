@@ -1,0 +1,22 @@
+{
+  "name": "springboot-on-electron",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "UNLICENSE",
+  "description": "Electron Springboot wrapper",
+  "dependencies": {
+    "electron-packager": "^13.1.1",
+    "minimal-request-promise": "^1.4.0",
+    "tree-kill": "^1.1.0"
+  },
+  "scripts": {
+    "package": "electron-packager ./ --icon=icon.ico --ignore=README.md --ignore=.idea --ignore=src --ignore=pom.xml",
+    "package-windows": "electron-packager ./ --icon=icon.ico --ignore=README.md --ignore=.idea --ignore=src --ignore=pom.xml --platform=win32",
+    "package-linux": "electron-packager ./ --icon=icon.ico --ignore=README.md --ignore=.idea --ignore=src --ignore=pom.xml --platform=darwin",
+    "package-mac": "electron-packager ./ --icon=icon.ico --ignore=README.md --ignore=.idea --ignore=src --ignore=pom.xml --platform=darwin",
+    "package-all": "electron-packager ./ --icon=icon.ico --ignore=README.md --ignore=.idea --ignore=src --ignore=pom.xml --platform=all"
+  },
+  "devDependencies": {
+    "electron": "^5.0.1"
+  }
+}
