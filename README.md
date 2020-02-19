@@ -1,12 +1,12 @@
 # Maven + Springboot + Electron (+ OpenJDK)
 
-This project can be used as a starting point to create your own Springboot application with electron using maven only.
-It contains all the necessary configuration and some placeholder files to get you started.
+This project can be used as a starting point to create your Java web application (f.e. Springboot) which is being wrapped in an  electron application. For the build process maven is being used only.
+This project contains all the necessary configuration and some placeholder files to get you started.
 
-This project was inspired a lot by [electron-java-app](https://github.com/jreznot/electron-java-app), the difference are: 
-* Relies for build purposes purely on maven (ofcourse also Node but indirectly)
+This project was inspired a lot by [electron-java-app](https://github.com/jreznot/electron-java-app), but has some key differences: 
+* Relies for building purposes purely on maven (ofcourse also Node but indirectly)
 * Includes OpenJDK
-* Electron app uses shipped OpenJDK
+* The electron app uses the shipped OpenJDK
 
 # How to build
 `mvn clean install -Pproduction`
