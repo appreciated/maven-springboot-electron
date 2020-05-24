@@ -34,8 +34,9 @@ Since not all your users have a JVM available via the classpath a OpenJDK 8 will
 
 
 # Build
-When executing `mvn clean install -Pproduction` by default the `windows` (x64) and `darwin` (x64) will be build. Building the other archs will probably nto cause any build 
-The rest is currently not supported but adding those shouldn't be to hard but some changed will nee to be mad at these places:
+When executing `mvn clean install -Pproduction` by default the `windows` (x64) and `darwin` (x64) will be build.
+
+The rest is currently not supported but adding those shouldn't be to hard but some changes will need to be made at the following files:
 * [Create 'scripts' for the other electron archs](https://github.com/appreciated/maven-springboot-electron/blob/master/src/main/javascript/package.json#L14-L17)
 * [Add the new 'scripts' to the maven build](https://github.com/appreciated/maven-springboot-electron/blob/master/pom.xml#L236-L257)
 * [Download the correct JDK](https://github.com/appreciated/maven-springboot-electron/blob/master/pom.xml#L265-L294)
