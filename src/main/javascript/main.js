@@ -114,6 +114,22 @@ const spawnServerProcess = function () {
         }).on('error', function (code, signal) {
             showStartUpErrorMessage();
         });
+    } else if (platform === 'linux') {
+        // make java executable
+        require('child_process').spawn('chmod',
+            ['+x', 'java'],
+            {
+                cwd: app.getAppPath() + '/java/jre/bin'
+            }
+        ).on('error', function (code, signal) {
+            showStartUpErrorMessage();
+        });
+
+        return require('child_process').spawn('jre/bin/java', ['-jar', filename, '--logging.file=logfile.log'], {
+            cwd: app.getAppPath() + '/java/'
+        }).on('error', function (code, signal) {
+            showStartUpErrorMessage();
+        });
     } else if (platform === 'darwin') {
         if (!app.getAppPath().startsWith("/Applications/")) {
             dialog.showMessageBox(null, {
@@ -166,7 +182,7 @@ if (!gotTheLock) {
             } else {
                 showLoadingScreen();
                 serverProcess = spawnServerProcess();
-                var appUrl = "http://localhost:" + port;
+                var appUrl = "http://127.0.0.1:" + port;
                 awaitStartUp(appUrl, function () {
                     showApplication(appUrl);
                 });

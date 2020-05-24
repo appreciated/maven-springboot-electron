@@ -255,6 +255,17 @@
                                     <workingDirectory>target/electron</workingDirectory>
                                 </configuration>
                             </execution>
+                            <execution>
+                                <id>package electron linux</id>
+                                <goals>
+                                    <goal>npm</goal>
+                                </goals>
+                                <phase>package</phase>
+                                <configuration>
+                                    <arguments>run package-linux</arguments>
+                                    <workingDirectory>target/electron</workingDirectory>
+                                </configuration>
+                            </execution>
                         </executions>
                     </plugin>
                     <!-- open-jdk download -->
@@ -291,6 +302,20 @@
                                     <outputFileName>jre_mac.tar.gz</outputFileName>
                                 </configuration>
                             </execution>
+                            <execution>
+                                <id>download-openjdk-jre-linux</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>
+                                        https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u222-b10/OpenJDK8U-jre_x64_linux_hotspot_8u222b10.tar.gz
+                                    </url>
+                                    <outputDirectory>${project.build.directory}/openjdk-jre/linux/</outputDirectory>
+                                    <outputFileName>jre_linux.tar.gz</outputFileName>
+                                </configuration>
+                            </execution>
                         </executions>
                     </plugin>
                     <plugin>
@@ -298,6 +323,21 @@
                         <artifactId>truezip-maven-plugin</artifactId>
                         <version>1.2</version>
                         <executions>
+                            <execution>
+                                <id>unpack-openjdk-jre-windows</id>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <phase>package</phase>
+                                <configuration>
+                                    <fileset>
+                                        <directory>${project.build.directory}/openjdk-jre/windows/jre_windows.zip
+                                        </directory>
+                                        <outputDirectory>${project.build.directory}/openjdk-jre/windows/
+                                        </outputDirectory>
+                                    </fileset>
+                                </configuration>
+                            </execution>
                             <execution>
                                 <id>unpack-openjdk-jre-mac-os</id>
                                 <goals>
@@ -314,16 +354,16 @@
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>unpack-openjdk-jre-windows</id>
+                                <id>unpack-openjdk-jre-linux</id>
                                 <goals>
                                     <goal>copy</goal>
                                 </goals>
                                 <phase>package</phase>
                                 <configuration>
                                     <fileset>
-                                        <directory>${project.build.directory}/openjdk-jre/windows/jre_windows.zip
+                                        <directory>${project.build.directory}/openjdk-jre/linux/jre_linux.tar.gz
                                         </directory>
-                                        <outputDirectory>${project.build.directory}/openjdk-jre/windows/
+                                        <outputDirectory>${project.build.directory}/openjdk-jre/linux/
                                         </outputDirectory>
                                     </fileset>
                                 </configuration>
@@ -388,6 +428,24 @@
                                     <resources>
                                         <resource>
                                             <directory>${project.build.directory}/openjdk-jre/mac-os/jdk8u222-b10-jre
+                                            </directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy-openjdk-jre-linux</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>
+                                        ${project.build.directory}/electron/springboot-on-electron-linux-x64/resources/app/java/jre
+                                    </outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${project.build.directory}/openjdk-jre/linux/jdk8u222-b10-jre
                                             </directory>
                                         </resource>
                                     </resources>
