@@ -12,7 +12,7 @@
   "scripts": {
     "package": "electron-packager ./ --icon=icon.ico --ignore=README.md --ignore=.idea --ignore=src --ignore=pom.xml",
     "package-windows": "electron-packager ./ --icon=icon.ico --ignore=README.md --ignore=.idea --ignore=src --ignore=pom.xml --platform=win32",
-    "package-linux": "electron-packager ./ --icon=icon.ico --ignore=README.md --ignore=.idea --ignore=src --ignore=pom.xml --platform=darwin",
+    "package-linux": "electron-packager ./ --icon=icon.ico --ignore=README.md --ignore=.idea --ignore=src --ignore=pom.xml --platform=linux",
     "package-mac": "electron-packager ./ --icon=icon.ico --ignore=README.md --ignore=.idea --ignore=src --ignore=pom.xml --platform=darwin",
     "package-all": "electron-packager ./ --icon=icon.ico --ignore=README.md --ignore=.idea --ignore=src --ignore=pom.xml --platform=all"
   },
