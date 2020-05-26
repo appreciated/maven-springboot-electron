@@ -6,7 +6,7 @@ This project was inspired a lot by [electron-java-app](https://github.com/jrezno
 * Instead of Gradle only Maven is being used (ofcourse also Node but indirectly)
 * When building the Electron application an OpenJDK will be included to start the Java web application
 
-## Proopf of concept
+## Proof of concept
 This purpose of this project was soley of the personal interrest to show that this concept (Electron -> JDK -> Java Application) is possible. This project should be used with care, since it causes a lot of resources to be wasted (Why would I need to install a Browser + an OpenJDK just to use a Java Web application?). To get rid at least of the OpenJDK is to use GraalVM native images. Currently I guess it is not possible to get rid of the browser. Also basic things as updating, logging etc. is currently not being taken care of.
 
 ## How to build
