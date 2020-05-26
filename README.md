@@ -7,7 +7,7 @@ This project was inspired a lot by [electron-java-app](https://github.com/jrezno
 * When building the Electron application an OpenJDK will be included to start the Java web application
 
 ## Proopf of concept
-This purpose of this project was soley of the personal interrest to show that this concept (Electron -> JDK -> Java Application) is possible. This project should be used with care, since it causes a lot of resources to be wasted. Also basic things as updating, logging etc. is not being taken care of. 
+This purpose of this project was soley of the personal interrest to show that this concept (Electron -> JDK -> Java Application) is possible. This project should be used with care, since it causes a lot of resources to be wasted (Why would I install A Browser, and a OpenJDK just to run a Java application?). Also basic things as updating, logging etc. is not being taken care of. 
 
 ## How to build
 `mvn clean install -Pproduction`
