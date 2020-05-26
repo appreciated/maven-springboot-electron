@@ -1,4 +1,4 @@
-# Maven + Springboot + Electron (+ OpenJDK)
+## Maven + Springboot + Electron (+ OpenJDK)
 
 This project can be used as a starting point to create your Java web application (f.e. Springboot) which is being wrapped in an  electron application. For the build process maven is being used only.
 This project contains all the necessary configuration and some placeholder files to get you started.
@@ -8,7 +8,7 @@ This project was inspired a lot by [electron-java-app](https://github.com/jrezno
 * Includes OpenJDK
 * The electron app uses the shipped OpenJDK
 
-# How to build
+## How to build
 `mvn clean install -Pproduction`
 
 The artifacts from the electron build will be put into:
@@ -19,10 +19,10 @@ When using Mac OS or linux, `wine` is required to build `windows` (check the mav
 
 When using Windows, admin privileges are required to build `darwin` (check the maven build for further informations).
 
-# Shipping OpenJDK
+## Shipping OpenJDK
 Since not all your users have a JVM available via the classpath a OpenJDK 8 will be packed into the electron builds
 
-# Documentation
+## Documentation
 * [Configure electron Application](https://github.com/appreciated/maven-springboot-electron/tree/master/src/main/javascript)
 * [Configure the electron archs Part1](https://github.com/appreciated/maven-springboot-electron/blob/master/src/main/javascript/package.json)
 * [Configure the electron archs Part2](https://github.com/appreciated/maven-springboot-electron/blob/master/pom.xml#L236-L257)
@@ -33,7 +33,7 @@ Since not all your users have a JVM available via the classpath a OpenJDK 8 will
 * [Configure OpenJDK injection](https://github.com/appreciated/maven-springboot-electron/blob/master/pom.xml#L359-L397)
 
 
-# Build
+## Build
 When executing `mvn clean install -Pproduction` by default the `windows` (x64) and `darwin` (x64) will be build.
 
 The rest is currently not supported but adding those shouldn't be to hard but some changes will need to be made at the following files:
@@ -45,4 +45,4 @@ The rest is currently not supported but adding those shouldn't be to hard but so
 * [Use correct JDK at runtime](https://github.com/appreciated/maven-springboot-electron/blob/master/src/main/javascript/main.js#L108-L139)
 
 
-# Pull requests are welcome
+## Pull requests are welcome
