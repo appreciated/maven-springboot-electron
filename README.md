@@ -7,7 +7,8 @@ This project was inspired a lot by [electron-java-app](https://github.com/jrezno
 * When building the Electron application an OpenJDK will be included to start the Java web application
 
 ## Proof of concept
-This purpose of this project was soley of the personal interrest to show that this concept (Electron -> JDK -> Java Application) is possible. This project should be used with care, since it causes a lot of resources to be wasted on the client-side (Why would I need to install a Browser + an OpenJDK just to use a Java Web application?). To get rid at least of the OpenJDK is to use GraalVM native images. Currently I guess it is not possible to get rid of the browser. Also basic things as updating, logging etc. is currently not being taken care of.
+This purpose of this project was soley of the personal interrest to show that this concept (Electron -> JDK -> Java Web Application) is possible. Before taking it into production, you should check your requirements carefully. On one hand the project is in its current form far from ideal, a lot of resources on the client-side are being wasted (Why would I need a Browser and a OpenJDK just to use a Java Web application as a desktop application?). If it needs to be Java, why not use Swing or JavaFX? It could f.e. be a good solution for use-cases before migrating to the cloud.  
+A improvement to the concept could be done by getting rid of the OpenJDK by using native images of the GraalVM. To get rid of the browser is currently not possible. If PWAs get available for all platforms, and are being allowed for applications runnning on localhost, the browser could eventually be droppen. Currently a updater functionality is missing. Logging needs to be done manually.
 
 ## How to build
 `mvn clean install -Pproduction`
