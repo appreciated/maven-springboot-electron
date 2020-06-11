@@ -109,7 +109,7 @@ const spawnServerProcess = function () {
     var filename = getJavaFile();
     platform = process.platform;
     if (platform === 'win32') {
-        return require('child_process').spawn('jre/bin/java', ['-jar', filename, '--logging.file=logfile.log'], {
+        return require('child_process').spawn('jre/bin/java', ['-jar', '-Dvaadin.productionMode=true', filename, '--logging.file=logfile.log'], {
             cwd: app.getAppPath() + '/java/'
         }).on('error', function (code, signal) {
             showStartUpErrorMessage();
