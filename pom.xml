@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <vaadin.version>14.0.9</vaadin.version>
+        <vaadin.version>14.4.1</vaadin.version>
 
         <drivers.dir>${project.basedir}/drivers</drivers.dir>
         <drivers.downloader.phase>pre-integration-test</drivers.downloader.phase>
@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.7.RELEASE</version>
+        <version>2.3.4.RELEASE</version>
     </parent>
 
     <pluginRepositories>
@@ -198,9 +198,9 @@
                     <plugin>
                         <groupId>com.github.eirslett</groupId>
                         <artifactId>frontend-maven-plugin</artifactId>
-                        <version>1.7.6</version>
+                        <version>1.10.0</version>
                         <configuration>
-                            <installDirectory>target/electron</installDirectory>
+                            <installDirectory>target/node</installDirectory>
                         </configuration>
                         <executions>
                             <execution>
@@ -209,7 +209,7 @@
                                     <goal>install-node-and-npm</goal>
                                 </goals>
                                 <configuration>
-                                    <nodeVersion>v8.11.1</nodeVersion>
+                                    <nodeVersion>v12.18.4</nodeVersion>
                                 </configuration>
                             </execution>
                             <execution>
@@ -255,13 +255,24 @@
                                     <workingDirectory>target/electron</workingDirectory>
                                 </configuration>
                             </execution>
+                            <execution>
+                                <id>package electron linux</id>
+                                <goals>
+                                    <goal>npm</goal>
+                                </goals>
+                                <phase>package</phase>
+                                <configuration>
+                                    <arguments>run package-linux</arguments>
+                                    <workingDirectory>target/electron</workingDirectory>
+                                </configuration>
+                            </execution>
                         </executions>
                     </plugin>
                     <!-- open-jdk download -->
                     <plugin>
                         <groupId>com.googlecode.maven-download-plugin</groupId>
                         <artifactId>download-maven-plugin</artifactId>
-                        <version>1.4.2</version>
+                        <version>1.6.0</version>
                         <executions>
                             <execution>
                                 <id>download-openjdk-jre-windows</id>
@@ -270,10 +281,13 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
+                                    <!-- When updating the URL also update the variable 'jreFolder' in src/main/electron/main.js -->
                                     <url>
-                                        https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u222-b10/OpenJDK8U-jre_x64_windows_hotspot_8u222b10.zip
+                                        https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u265-b01/OpenJDK8U-jre_x64_windows_hotspot_8u265b01.zip
                                     </url>
-                                    <outputDirectory>${project.build.directory}/openjdk-jre/windows/</outputDirectory>
+                                    <outputDirectory>
+                                        ${project.build.directory}/electron/application-win32-x64/resources/app/java
+                                    </outputDirectory>
                                     <outputFileName>jre_windows.zip</outputFileName>
                                 </configuration>
                             </execution>
@@ -284,59 +298,42 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
+                                    <!-- When updating the URL also update the variable 'jreFolder' in src/main/electron/main.js -->
                                     <url>
-                                        https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u222-b10/OpenJDK8U-jre_x64_mac_hotspot_8u222b10.tar.gz
+                                        https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u265-b01/OpenJDK8U-jre_x64_mac_hotspot_8u265b01.tar.gz
                                     </url>
-                                    <outputDirectory>${project.build.directory}/openjdk-jre/mac-os/</outputDirectory>
+                                    <outputDirectory>
+                                        ${project.build.directory}/electron/application-darwin-x64/application.app/Contents/Resources/app/java
+                                    </outputDirectory>
                                     <outputFileName>jre_mac.tar.gz</outputFileName>
                                 </configuration>
                             </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>truezip-maven-plugin</artifactId>
-                        <version>1.2</version>
-                        <executions>
                             <execution>
-                                <id>unpack-openjdk-jre-mac-os</id>
-                                <goals>
-                                    <goal>copy</goal>
-                                </goals>
+                                <id>download-openjdk-jre-linux</id>
                                 <phase>package</phase>
-                                <configuration>
-                                    <fileset>
-                                        <directory>${project.build.directory}/openjdk-jre/mac-os/jre_mac.tar.gz
-                                        </directory>
-                                        <outputDirectory>${project.build.directory}/openjdk-jre/mac-os/
-                                        </outputDirectory>
-                                    </fileset>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>unpack-openjdk-jre-windows</id>
                                 <goals>
-                                    <goal>copy</goal>
+                                    <goal>wget</goal>
                                 </goals>
-                                <phase>package</phase>
                                 <configuration>
-                                    <fileset>
-                                        <directory>${project.build.directory}/openjdk-jre/windows/jre_windows.zip
-                                        </directory>
-                                        <outputDirectory>${project.build.directory}/openjdk-jre/windows/
-                                        </outputDirectory>
-                                    </fileset>
+                                    <!-- When updating the URL also update the variable 'jreFolder' in src/main/electron/main.js -->
+                                    <url>
+                                        https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u265-b01/OpenJDK8U-jre_x64_linux_hotspot_8u265b01.tar.gz
+                                    </url>
+                                    <outputDirectory>
+                                        ${project.build.directory}/electron/application-linux-x64/resources/app/java
+                                    </outputDirectory>
+                                    <outputFileName>jre_linux.tar.gz</outputFileName>
                                 </configuration>
                             </execution>
                         </executions>
                     </plugin>
                     <plugin>
                         <artifactId>maven-resources-plugin</artifactId>
-                        <version>3.1.0</version>
+                        <version>3.2.0</version>
                         <executions>
                             <execution>
                                 <id>copy-resources</id>
-                                <!-- copying the source required by the electron build needs to be done early-->
+                                <!-- here the phase you need -->
                                 <phase>validate</phase>
                                 <goals>
                                     <goal>copy-resources</goal>
@@ -356,42 +353,45 @@
                                     </resources>
                                 </configuration>
                             </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- Production mode is activated using -Pproduction -->
+            <id>production-test</id>
+            <properties>
+                <vaadin.productionMode>true</vaadin.productionMode>
+            </properties>
+
+            <dependencies>
+                <dependency>
+                    <groupId>com.vaadin</groupId>
+                    <artifactId>flow-server-production-mode</artifactId>
+                </dependency>
+            </dependencies>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <jvmArguments>-Dvaadin.productionMode</jvmArguments>
+                            <executable>true</executable>
+                            <outputDirectory>target/electron/java</outputDirectory>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.vaadin</groupId>
+                        <artifactId>vaadin-maven-plugin</artifactId>
+                        <executions>
                             <execution>
-                                <id>copy-openjdk-jre-windows</id>
-                                <!-- adding the openjdk jre should be done later -->
-                                <phase>package</phase>
                                 <goals>
-                                    <goal>copy-resources</goal>
+                                    <goal>build-frontend</goal>
                                 </goals>
-                                <configuration>
-                                    <outputDirectory>
-                                        ${project.build.directory}/electron/springboot-on-electron-win32-x64/resources/app/java/jre
-                                    </outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>${project.build.directory}/openjdk-jre/windows/jdk8u222-b10-jre
-                                            </directory>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>copy-openjdk-jre-mac-os</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>
-                                        ${project.build.directory}/electron/springboot-on-electron-darwin-x64/springboot-on-electron.app/Contents/Resources/app/java/jre/
-                                    </outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>${project.build.directory}/openjdk-jre/mac-os/jdk8u222-b10-jre
-                                            </directory>
-                                        </resource>
-                                    </resources>
-                                </configuration>
+                                <phase>compile</phase>
                             </execution>
                         </executions>
                     </plugin>

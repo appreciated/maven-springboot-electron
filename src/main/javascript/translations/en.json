@@ -1,0 +1,14 @@
+{
+  "application-name": "application",
+  "yes": "Yes",
+  "no": "No",
+  "confirm": "Confirm",
+  "ok": "OK",
+  "are-you-sure-you-want-to-quit": "Are you sure you want to quit?",
+  "java-runtime-not-available": "Java Runtime not available",
+  "java-runtime-not-available-long": "\"application\" is not able to start. There seem to be issues related to the shipped Open JDK.",
+  "wrong-directory": "\"application\" is in wrong directory",
+  "wrong-directory-long": "\"application\" is not able to start. Please move the application to the \"Applications\" folder.",
+  "port-not-available": "Port not available",
+  "port-not-available-long": "\"application\" is not able to start. The following port is already being used: "
+}

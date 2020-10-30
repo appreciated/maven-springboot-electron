@@ -1,0 +1,14 @@
+{
+  "application-name": "application",
+  "yes": "Ja",
+  "no": "Nein",
+  "confirm": "Bestätigen",
+  "ok": "Okay",
+  "are-you-sure-you-want-to-quit": "Sind Sie sich sicher dass Sie \"application\" schließen möchten?",
+  "java-runtime-not-available": "Java Runtime nicht verfügbar",
+  "java-runtime-not-available-long": "\"application\" kann nicht gestartet werden. Es scheint ein Problem mit dem ausgelieferten OpenJDK zu bestehen.",
+  "wrong-directory": "\"application\" im falschen Verzeichnis",
+  "wrong-directory-long": "\"application\" kann nicht gestartet werden. Bitte verschieben Sie die Applikation in den Ordner \"Programme\".",
+  "port-not-available": "Port nicht verfügbar",
+  "port-not-available-long": "\"application\" kann nicht gestartet werden. Der folgendende Port wird bereits verwendet: "
+}
