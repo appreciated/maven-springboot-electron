@@ -8,7 +8,7 @@ This project was inspired a lot by [electron-java-app](https://github.com/jrezno
 
 ## Proof of concept
 The purpose of this project was sole of personal interest to show that this concept (Electron -> shipped JDK -> Java Web Application as Jar) is possible. Before taking it into production, you should check your requirements carefully. On one hand, the project is in its current form far from ideal. Electron wastes out of the box a lot of resources on the client-side, shipping an additional a JVM and an embedded web server does not make it better (Why would I need a Browser and a OpenJDK just to use a Java Web application as a desktop application?). If it needs to be Java, why not use Swing or JavaFX? But I can imagine some use cases where this could come in handy, f.e. as inbetween solution before migrating to the cloud.  
-An improvement to the concept could be done by getting rid of the OpenJDK by using native images of the GraalVM. Getting rid of the browser is currently not possible. If PWAs get available for all platforms and can run applications running on localhost, the browser could eventually be dropped. Currently, an updater functionality is missing, also logging needs to be done manually.
+An improvement to the concept could be done by getting rid of the OpenJDK by using native images of the GraalVM. Getting rid of the browser is currently not possible but could also be improved a lot by using [tauri](https://github.com/tauri-apps/tauri) instead of electron. If PWAs get available for all platforms and can run applications running on localhost, the browser could eventually be dropped entierly. Currently, an updater functionality is missing, also logging needs to be done manually.
 
 ## How to build
 `mvn clean install -Pproduction`
