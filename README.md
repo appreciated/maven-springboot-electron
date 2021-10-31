@@ -1,14 +1,14 @@
 ## Maven + Springboot + Electron (+ OpenJDK)
 
-This project is a starting point to wrap any Java web application (f.e. using Springboot) with electron as a native executable. For the build process, only maven is being used. This project contains all the necessary configuration and some placeholder files to get you started.
+This project is a starting point to wrap any Java web application (f.e. using Springboot) with Electron as a native executable. For the build process, only Maven is being used. This project contains all the necessary configurations and some placeholder files to get you started.
 
 This project was inspired a lot by [electron-java-app](https://github.com/jreznot/electron-java-app), but it has some key differences: 
 * Instead of Gradle only Maven is being used (of course also Node but indirectly)
 * When building the Electron application an OpenJDK will be included to start the Java web application
 
 ## Proof of concept
-The purpose of this project was sole of personal interest to show that this concept (Electron -> shipped JDK -> Java Web Application as Jar) is possible. Before taking it into production, you should check your requirements carefully. On one hand, the project is in its current form far from ideal. Electron wastes out of the box a lot of resources on the client-side, shipping an additional a JVM and an embedded web server does not make it better (Why would I need a Browser and a OpenJDK just to use a Java Web application as a desktop application?). If it needs to be Java, why not use Swing or JavaFX? But I can imagine some use cases where this could come in handy, f.e. as inbetween solution before migrating to the cloud.  
-An improvement to the concept could be done by getting rid of the OpenJDK by using native images of the GraalVM. Getting rid of the browser is currently not possible but could also be improved a lot by using [tauri](https://github.com/tauri-apps/tauri) instead of electron. If PWAs get available for all platforms and can run applications running on localhost, the browser could eventually be dropped entierly. Currently, an updater functionality is missing, also logging needs to be done manually.
+The purpose of this project was sole of personal interest to show that this concept (Electron -> shipped JDK -> Java Web Application as Jar) is possible. Before taking it into production, you should check your requirements carefully. On one hand, the project is in its current form far from ideal. Electron wastes out of the box a lot of resources on the client-side, shipping an additional JVM and an embedded web server does not make it better (Why would I need a Browser and an OpenJDK just to use a Java Web application as a desktop application?). If it needs to be Java, why not use Swing or JavaFX? But I can imagine some use cases where this could come in handy, f.e. as an in-between solution before migrating to the cloud.  
+An improvement to the concept could be done by getting rid of the OpenJDK by using native images of the GraalVM. Getting rid of the browser is currently not possible but could also be improved a lot by using [tauri](https://github.com/tauri-apps/tauri) instead of Electron. If PWAs get available for all platforms and can run applications running on localhost, the browser could eventually be dropped entirely. Currently, an updater functionality is missing, also logging needs to be done manually.
 
 ## How to build
 `mvn clean install -Pproduction`
@@ -17,12 +17,12 @@ The artifacts from the electron build will be put into:
 * `target\electron\springboot-on-electron-darwin-x64`
 * `target\electron\springboot-on-electron-win32-x64`
 
-When using Mac OS or linux, `wine` is required to build `windows` (check the maven build for further information).
+When using Mac OS or Linux, `wine` is required to build `windows` (check the maven build for further information).
 
 When using Windows, admin privileges are required to build `darwin` (check the maven build for further information).
 
 ## Shipping OpenJDK
-Since not all your users have a JVM available via the classpath a OpenJDK 8 will be packed into the electron builds
+Since not all your users have a JVM available via the classpath an OpenJDK 8 will be packed into the electron builds
 
 ## Documentation
 * [Configure electron Application](https://github.com/appreciated/maven-springboot-electron/tree/master/src/main/javascript)
