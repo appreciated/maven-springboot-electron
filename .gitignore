@@ -16,3 +16,4 @@ drivers/
 error-screenshots/
 webpack.generated.js
 scripts/package-and-zip.bat
+/node/

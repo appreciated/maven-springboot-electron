@@ -9,13 +9,11 @@
     <packaging>jar</packaging>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <vaadin.version>14.6.8</vaadin.version>
-
+        <vaadin.version>24.3.2</vaadin.version>
         <drivers.dir>${project.basedir}/drivers</drivers.dir>
         <drivers.downloader.phase>pre-integration-test</drivers.downloader.phase>
     </properties>
@@ -23,7 +21,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.4.RELEASE</version>
+        <version>3.2.0</version>
     </parent>
 
     <pluginRepositories>
@@ -70,34 +68,7 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <!-- Replace artifactId with vaadin-core to use only free components -->
-            <artifactId>vaadin</artifactId>
-            <exclusions>
-                <!-- Webjars are only needed when running in Vaadin 13 compatibility mode -->
-                <exclusion>
-                    <groupId>com.vaadin.webjar</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.webjars.bowergithub.insites</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.webjars.bowergithub.polymer</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.webjars.bowergithub.polymerelements</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.webjars.bowergithub.vaadin</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.webjars.bowergithub.webcomponents</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>vaadin-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
@@ -198,7 +169,7 @@
                     <plugin>
                         <groupId>com.github.eirslett</groupId>
                         <artifactId>frontend-maven-plugin</artifactId>
-                        <version>1.10.0</version>
+                        <version>1.15.0</version>
                         <configuration>
                             <installDirectory>target/node</installDirectory>
                         </configuration>
@@ -209,7 +180,7 @@
                                     <goal>install-node-and-npm</goal>
                                 </goals>
                                 <configuration>
-                                    <nodeVersion>v12.18.4</nodeVersion>
+                                    <nodeVersion>v18.12.0</nodeVersion>
                                 </configuration>
                             </execution>
                             <execution>
@@ -272,7 +243,7 @@
                     <plugin>
                         <groupId>com.googlecode.maven-download-plugin</groupId>
                         <artifactId>download-maven-plugin</artifactId>
-                        <version>1.6.0</version>
+                        <version>1.8.0</version>
                         <executions>
                             <execution>
                                 <id>download-openjdk-jre-windows</id>
@@ -283,7 +254,7 @@
                                 <configuration>
                                     <!-- When updating the URL also update the variable 'jreFolder' in src/main/electron/main.js -->
                                     <url>
-                                        https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u265-b01/OpenJDK8U-jre_x64_windows_hotspot_8u265b01.zip
+                                        https://github.com/AdoptOpenJDK/openjdk17-binaries/releases/download/jdk-2021-05-07-13-31/OpenJDK-jdk_x64_windows_hotspot_2021-05-06-23-30.zip
                                     </url>
                                     <outputDirectory>
                                         ${project.build.directory}/electron/application-win32-x64/resources/app/java
@@ -300,7 +271,7 @@
                                 <configuration>
                                     <!-- When updating the URL also update the variable 'jreFolder' in src/main/electron/main.js -->
                                     <url>
-                                        https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u265-b01/OpenJDK8U-jre_x64_mac_hotspot_8u265b01.tar.gz
+                                        https://github.com/AdoptOpenJDK/openjdk17-binaries/releases/download/jdk-2021-05-07-13-31/OpenJDK-jdk_x64_mac_hotspot_2021-05-06-23-30.tar.gz
                                     </url>
                                     <outputDirectory>
                                         ${project.build.directory}/electron/application-darwin-x64/application.app/Contents/Resources/app/java
@@ -317,7 +288,7 @@
                                 <configuration>
                                     <!-- When updating the URL also update the variable 'jreFolder' in src/main/electron/main.js -->
                                     <url>
-                                        https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u265-b01/OpenJDK8U-jre_x64_linux_hotspot_8u265b01.tar.gz
+                                        https://github.com/AdoptOpenJDK/openjdk17-binaries/releases/download/jdk-2021-05-07-13-31/OpenJDK-jdk_x64_linux_hotspot_2021-05-06-23-30.tar.gz
                                     </url>
                                     <outputDirectory>
                                         ${project.build.directory}/electron/application-linux-x64/resources/app/java

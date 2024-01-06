@@ -1,18 +1,25 @@
-const {
-    app, BrowserWindow, dialog
-} = require('electron');
-const getPort = require('get-port');
-const decompress = require('decompress');
-const child_process = require('child_process');
-const requestPromise = require('minimal-request-promise');
+import {app, BrowserWindow, dialog} from "electron";
+
+import getPort from "get-port";
+
+import decompress from "decompress";
+
+import child_process from "child_process";
+
+import requestPromise from "minimal-request-promise";
+
+import path from "path";
+
+import fs from "fs";
+
+import translations from "./translations/i18n.js";
+
 let i18n;
-const path = require('path');
-const fs = require("fs");
 let mainWindow = null;
 let loading = null;
 let serverProcess = null;
 let allowClose = false;
-const jreFolder = 'jdk8u265-b01-jre';
+const jreFolder = 'jdk-17+20';
 
 function error_log(exception) {
     fs.appendFile('error.log', exception.stack + "\n", (err) => {
@@ -103,7 +110,7 @@ try {
     }
     const spawnServerProcess = function (port) {
         var filename = getJavaFile();
-        platform = process.platform;
+        const platform = process.platform;
         if (platform === 'win32') {
             return child_process.spawn(jreFolder + path.sep + 'bin' + path.sep + 'java', ['-jar', '-Dvaadin.productionMode=true', '-Dserver.port=' + port, filename, '--logging.file=application.log'], {
                 cwd: app.getAppPath() + path.sep + 'java' + path.sep
@@ -169,10 +176,10 @@ try {
             app.quit();
         });
         app.on('ready', function () {
-            i18n = new (require('./translations/i18n'));
+            i18n = new translations();
             try {
                 showLoadingScreen();
-                platform = process.platform;
+                const platform = process.platform;
                 const jrePath = app.getAppPath() + path.sep + 'java' + path.sep + jreFolder;
                 const compressedJreFilePath = app.getAppPath() + path.sep + 'java' + path.sep;
                 const extractionTargetPath = app.getAppPath() + path.sep + 'java' + path.sep;

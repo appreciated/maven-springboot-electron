@@ -17,7 +17,7 @@ The artifacts from the electron build will be put into:
 * `target\electron\springboot-on-electron-darwin-x64`
 * `target\electron\springboot-on-electron-win32-x64`
 
-When using Mac OS or Linux, `wine` is required to build `windows` (check the maven build for further information).
+When using macOS or Linux, `wine` is required to build `windows` (check the maven build for further information).
 
 When using Windows, admin privileges are required to build `darwin` (check the maven build for further information).
 
