@@ -11,8 +11,8 @@ The purpose of this project was sole of personal interest to show that this conc
 An improvement to the concept could be done by getting rid of the OpenJDK by using native images of the GraalVM. Getting rid of the browser is currently not possible but could also be improved a lot by using [tauri](https://github.com/tauri-apps/tauri) instead of Electron. If PWAs get available for all platforms and can run applications running on localhost, the browser could eventually be dropped entirely. Currently, an updater functionality is missing, also logging needs to be done manually.
 
 ## Branches
-- master -> Java 17  
-- java-8 -> Java 8
+- `master` -> Java 17  
+- `java-8` -> Java 8
 
 ## How to build
 `mvn clean install -Pproduction`
