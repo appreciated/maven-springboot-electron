@@ -26,7 +26,7 @@ When using macOS or Linux, `wine` is required to build `windows` (check the mave
 When using Windows, admin privileges are required to build `darwin` (check the maven build for further information).
 
 ## Shipping OpenJDK
-Since not all your users have a JVM available via the classpath an OpenJDK 8 will be packed into the electron builds
+Since not all your users have the right JVM available via classpath an OpenJDK 17 will be packed into the electron builds
 
 ## Documentation
 * [Configure electron Application](https://github.com/appreciated/maven-springboot-electron/tree/master/src/main/javascript)
