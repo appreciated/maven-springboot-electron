@@ -20,6 +20,7 @@ An improvement to the concept could be done by getting rid of the OpenJDK by usi
 The artifacts from the electron build will be put into:
 * `target\electron\springboot-on-electron-darwin-x64`
 * `target\electron\springboot-on-electron-win32-x64`
+* `target\electron\springboot-on-electron-linux-x64`
 
 When using macOS or Linux, `wine` is required to build `windows` (check the maven build for further information).
 
@@ -38,7 +39,7 @@ Since not all your users have the right JVM available via classpath an OpenJDK 1
 * [Configure OpenJDK download & injection](https://github.com/appreciated/maven-springboot-electron/blob/master/pom.xml#L260-L332)
 
 ## Build
-When executing `mvn clean install -Pproduction` by default the `windows` (x64) and `darwin` (x64) will be built.
+When executing `mvn clean install -Pproduction` by default the `windows` (x64), `darwin` (x64) and `linux` (x64) will be built.
 
 The rest is currently not supported but adding those shouldn't be too hard but some changes will need to be made at the following files:
 * [Create 'scripts' for the other electron archs](https://github.com/appreciated/maven-springboot-electron/blob/master/src/main/javascript/package.json#L14-L17)
