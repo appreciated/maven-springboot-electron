@@ -35,9 +35,7 @@ Since not all your users have a JVM available via the classpath an OpenJDK 8 wil
 
 * [Electron build Part1](https://github.com/appreciated/maven-springboot-electron/blob/master/pom.xml#L198-L259)
 * [Electron build Part2](https://github.com/appreciated/maven-springboot-electron/blob/master/pom.xml#L333-L358)
-* [Configure OpenJDK download](https://github.com/appreciated/maven-springboot-electron/blob/master/pom.xml#L260-L332)
-* [Configure OpenJDK injection](https://github.com/appreciated/maven-springboot-electron/blob/master/pom.xml#L359-L397)
-
+* [Configure OpenJDK download & injection](https://github.com/appreciated/maven-springboot-electron/blob/master/pom.xml#L260-L332)
 
 ## Build
 When executing `mvn clean install -Pproduction` by default the `windows` (x64) and `darwin` (x64) will be built.
