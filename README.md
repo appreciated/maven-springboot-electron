@@ -1,10 +1,10 @@
 ## Maven + Springboot + Electron (+ OpenJDK)
+This project serves as an initial framework for encapsulating any Java web application, such as those utilizing Springboot, within Electron to create a native executable. The build process exclusively employs Maven, and this repository includes all requisite configurations along with some placeholder files to facilitate a smooth startup.
 
-This project is a starting point to wrap any Java web application (f.e. using Springboot) with Electron as a native executable. For the build process, only Maven is being used. This project contains all the necessary configurations and some placeholder files to get you started.
+The inspiration for this project derives significantly from [electron-java-app](https://github.com/jreznot/electron-java-app), yet it incorporates several distinct differences:
 
-This project was inspired a lot by [electron-java-app](https://github.com/jreznot/electron-java-app), but it has some key differences: 
-* Instead of Gradle only Maven is being used (of course also Node but indirectly)
-* When building the Electron application an OpenJDK will be included to start the Java web application
+- The build process utilizes Maven exclusively, with Node being involved indirectly.
+- The Electron application build includes an OpenJDK to launch the Java web application.
 
 ## Proof of concept
 The primary objective of this project was to explore the feasibility of a novel concept involving Electron, a shipped JDK, and a Java Web Application packaged as a Jar, purely out of personal interest. Before considering its implementation in a production environment, it is crucial to thoroughly assess your specific requirements.
