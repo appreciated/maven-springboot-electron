@@ -1,4 +1,4 @@
-### Maven + Spring Boot + Electron (+ OpenJDK)  
+# Maven + Spring Boot + Electron (+ OpenJDK)  
 
 This project is a starting point for wrapping any Java web app—like those using Spring Boot—inside Electron to create a native executable. It’s built entirely with Maven, and the repo comes with all the necessary configurations and some placeholders to help you get up and running quickly.  
 
