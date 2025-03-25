@@ -1,17 +1,24 @@
-## Maven + Springboot + Electron (+ OpenJDK)
-This project serves as an initial framework for encapsulating any Java web application, such as those utilizing Springboot, within Electron to create a native executable. The build process exclusively employs Maven, and this repository includes all requisite configurations along with some placeholder files to facilitate a smooth startup.
+### Maven + Spring Boot + Electron (+ OpenJDK)  
 
-The inspiration for this project derives significantly from [electron-java-app](https://github.com/jreznot/electron-java-app), yet it incorporates several distinct differences:
+This project is a starting point for wrapping any Java web app—like those using Spring Boot—inside Electron to create a native executable. It’s built entirely with Maven, and the repo comes with all the necessary configurations and some placeholders to help you get up and running quickly.  
 
-- The build process utilizes Maven exclusively, with Node being involved indirectly.
-- The Electron application build includes an OpenJDK to launch the Java web application.
+The idea for this project was heavily inspired by [electron-java-app](https://github.com/jreznot/electron-java-app), but there are a few key differences:  
 
-## Proof of concept
-The primary objective of this project was to explore the feasibility of a novel concept involving Electron, a shipped JDK, and a Java Web Application packaged as a Jar, purely out of personal interest. Before considering its implementation in a production environment, it is crucial to thoroughly assess your specific requirements.
+- The build process is Maven-only, with Node being used indirectly.  
+- The Electron app includes an OpenJDK to run the Java web app.  
 
-As it stands, the project is not without its drawbacks. Electron inherently consumes significant client-side resources, and the inclusion of both an additional JVM and an embedded web server further exacerbates this issue. This raises the question: Is it necessary to use both a browser and OpenJDK to run a Java Web Application as a desktop application? If the application must remain in Java, alternatives such as Swing or JavaFX could be considered more resource-efficient. However, there are scenarios where this setup could prove beneficial, such as a transitional solution prior to cloud migration.
+### Proof of Concept  
 
-Potential enhancements to this concept could involve eliminating the OpenJDK by leveraging native images from GraalVM. Although completely removing the browser component is not currently feasible, significant improvements could be made by substituting Electron with [Tauri](https://github.com/tauri-apps/tauri). As Progressive Web Apps (PWAs) become more universally compatible and capable of running local applications, the necessity for a browser might diminish entirely. Presently, the project lacks updater functionality, and logging must be implemented manually, which are areas ripe for development.
+The main goal here was to test out a idea, to combine Electron, a bundled JDK, and a Java web app in a Jar because I enjoy tinkering. Before using this in production, you’ll definitely want to evaluate if it fits your needs.  
+
+That said, there are some trade-offs. Electron is already resource-heavy, and adding both a JVM and an embedded web server on top of it makes it even more demanding. So, do you really need both a browser and OpenJDK just to run a Java web app as a desktop app? If sticking with Java is a must, options like Swing or JavaFX could be more efficient. But in some cases, this setup might still be useful—for example, as a temporary solution before moving to the cloud.  
+
+A few ways to improve this concept:  
+- Removing OpenJDK by using GraalVM native images.  
+- Replacing Electron with [Tauri](https://github.com/tauri-apps/tauri) for a lighter setup.  
+- Long-term, as Progressive Web Apps (PWAs) evolve, the need for a browser might disappear entirely.  
+
+Right now, this project doesn’t include an updater, and logging has to be set up manually—definitely areas for future development.
 
 ## Branches
 - `master` -> Java 17  
